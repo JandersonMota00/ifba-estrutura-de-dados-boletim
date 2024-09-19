@@ -62,7 +62,7 @@ A lista encadeada utiliza uma `struct` para armazenar as seguintes informações
 ```c
 struct Aluno {
     int identificador;
-    char nome[50];
+    char nome[255];
     float nota;
     struct Aluno *proximo;
 };

@@ -1,8 +1,6 @@
-/*
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-*/
 
 struct Aluno {
     int identificador;
@@ -11,7 +9,28 @@ struct Aluno {
     struct Aluno *proximo;
 };
 
-void cadastrarAluno() {}
+/* COMANDO:
+** 'malloc' para alocar memória para um novo aluno, garantindo que ele seja adicionado à lista encadeada.
+*/
+void cadastrarAluno(struct Aluno **aluno) {
+    // Criação de um novo aluno
+    struct Aluno *novoAluno = (struct Aluno *)malloc(sizeof(struct Aluno))
+
+    printf("Digite o identificador (nº): ");
+    scanf("%d", &novoAluno->identificador);
+
+    printf("Digite o nome: ");
+    scanf("%s", novoAluno->nome);
+
+    printf("Digite o nota: ");
+    scanf("%f", &novoAluno->nota);
+
+    //Adicionando o novo aluno no início da lista encadeada
+    novoAluno->proximo = *aluno;
+    *aluno = novoAluno;
+
+    printf("\nAluno cadastrado com sucesso!\n\n");
+}
 
 void removerAluno() {}
 
@@ -22,6 +41,8 @@ void exibirEstatistica() {}
 int main()
 {
     struct Aluno *aluno = NULL;
+    struct Aluno alunos[10];
+    
     int opcao;
 
     do {
@@ -33,6 +54,7 @@ int main()
         {
         case 01:
             //Cadastro novo aluno
+            cadastrarAluno(&aluno);
             break;
         
         case 02:

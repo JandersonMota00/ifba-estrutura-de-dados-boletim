@@ -14,7 +14,7 @@ struct Aluno {
 */
 void cadastrarAluno(struct Aluno **aluno) {
     // Criação de um novo aluno
-    struct Aluno *novoAluno = (struct Aluno *)malloc(sizeof(struct Aluno))
+    struct Aluno *novoAluno = (struct Aluno *)malloc(sizeof(struct Aluno));
 
     printf("Digite o identificador (nº): ");
     scanf("%d", &novoAluno->identificador);
@@ -35,6 +35,29 @@ void cadastrarAluno(struct Aluno **aluno) {
 void removerAluno() {}
 
 void exibirAluno() {}
+
+//Busca aluno pelo identificador.
+void buscarAlunoPorIdentificador(Aluno *aluno, int identificador){
+
+    //Indice atual é um ponteiro do tipo aluno e que vai armazenar o aluno do primeiro nó, para iniciar a busca.
+    struct Aluno *indiceAtual = aluno;
+    
+    //Enquanto o IndiceAtual for diferente de Nulo, ele não chegou no final da lista encadeada, portanto continuar na busca. 
+    while(indiceAtual != NULL){
+        //Condição que verifica se o identificador do nó atual é igual ao que estou buscando.
+        if(indiceAtual -> identificador == identificador){
+            printf("Nome: %d\n",indiceAtual -> nome);
+            printf("Nota: %d\n",indiceAtual -> nota);
+            printf("Identificador %d\n", indiceAtual-> identificador);
+        }
+
+        //indiceAtual avança para o proximo nó da lista encadeada, caso a condição do if não seja atendida
+        indiceAtual= indiceAtual -> proximo;
+    }
+    
+    printf("\nAluno do identificador %d não foi encontrado na lista encadeada\n" identificador);
+
+}
 
 void exibirEstatistica() {}
 

@@ -1,7 +1,7 @@
 # IFBA - Estrutura de Dados
 
 - **Projeto:** Lista de Alunos do IFBA
-- **Professor:** Felipe Gomes
+- **Professor:** Felipe Gustavo de Souza Gomes
 - **Semestre:** 3
 - **Ano:** 2024.1
 

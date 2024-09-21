@@ -3,7 +3,8 @@
 #include <string.h>
 #include <time.h>
 
-struct Aluno {
+struct Aluno
+{
   int identificador;
   char nome[255];
   float nota;
@@ -14,7 +15,8 @@ struct Aluno {
 ** 'malloc' para alocar memória para um novo aluno, garantindo que ele seja
 *adicionado à lista encadeada.
 */
-void cadastrarAluno(struct Aluno **aluno) {
+void cadastrarAluno(struct Aluno **aluno)
+{
   // Criação de um novo aluno
   struct Aluno *novoAluno = (struct Aluno *)malloc(sizeof(struct Aluno));
 
@@ -34,15 +36,12 @@ void cadastrarAluno(struct Aluno **aluno) {
   printf("\nAluno cadastrado com sucesso!\n\n");
 }
 
-void removerAluno() {}
-
-void exibirAluno() {}
-
 // Busca aluno pelo identificador.
-void buscarAlunoPorIdentificador(struct Aluno *aluno, int identificador) {
-   
-   //Variável de controle para encontrar aluno
-   int encontrado = 0;
+void buscarAlunoPorIdentificador(struct Aluno *aluno, int identificador)
+{
+
+  // Variável de controle para encontrar aluno
+  int encontrado = 0;
 
   // Indice atual é um ponteiro do tipo aluno e que vai armazenar o aluno do
   // primeiro nó, para iniciar a busca.
@@ -50,16 +49,18 @@ void buscarAlunoPorIdentificador(struct Aluno *aluno, int identificador) {
 
   // Enquanto o IndiceAtual for diferente de Nulo, ele não chegou no final da
   // lista encadeada, portanto continuar na busca.
-  while (indiceAtual != NULL) {
+  while (indiceAtual != NULL)
+  {
     // Condição que verifica se o identificador do nó atual é igual ao que estou
     // buscando.
-    if (indiceAtual->identificador == identificador) {
+    if (indiceAtual->identificador == identificador)
+    {
       printf("Nome: %s\n", indiceAtual->nome);
       printf("Nota: %f\n", indiceAtual->nota);
       printf("Identificador %d\n", indiceAtual->identificador);
-      //Aluno encontrado
+      // Aluno encontrado
       encontrado = 1;
-      //Encerrar a busca
+      // Encerrar a busca
       break;
     }
 
@@ -67,32 +68,38 @@ void buscarAlunoPorIdentificador(struct Aluno *aluno, int identificador) {
     // do if não seja atendida
     indiceAtual = indiceAtual->proximo;
   }
-  
-  //Exibe a mensagem caso o aluno não seja encontrado
-  if(!encontrado){
+
+  // Exibe a mensagem caso o aluno não seja encontrado
+  if (!encontrado)
+  {
     printf("\nAluno do identificador %d não foi encontrado na lista encadeada\n",
-         identificador);
+           identificador);
   }
- 
 }
 
-void removerAlunoPorIdentificador(struct Aluno **aluno, int identificador) {
+void removerAlunoPorIdentificador(struct Aluno **aluno, int identificador)
+{
 
   struct Aluno *indiceAtual = *aluno;  // Inicio da lista
   struct Aluno *indiceAnterior = NULL; // Ponteiro para o nó anterior
 
-  while (indiceAtual != NULL) {
-    if (indiceAtual->identificador == identificador) {
+  while (indiceAtual != NULL)
+  {
+    if (indiceAtual->identificador == identificador)
+    {
       // Se o aluno estiver no inicio da lista, ele vai ser apagado e a lista
       // vai ser atualizada
-      if (indiceAnterior == NULL) {
+      if (indiceAnterior == NULL)
+      {
         *aluno = indiceAtual->proximo;
-      //Remoção dos alunos caso não seja o primeiro aluno da lista a ser removido, ou seja, segundo em diante  
-      } else {
+        // Remoção dos alunos caso não seja o primeiro aluno da lista a ser removido, ou seja, segundo em diante
+      }
+      else
+      {
         indiceAnterior->proximo = indiceAtual->proximo;
       }
 
-      //Liberar a memória do aluno removido
+      // Liberar a memória do aluno removido
       free(indiceAtual);
       printf("Aluno com o identificador %d, foi removido da lista!",
              identificador);
@@ -108,22 +115,69 @@ void removerAlunoPorIdentificador(struct Aluno **aluno, int identificador) {
   printf("Aluno com o identificador %d não foi encontrado", identificador);
 }
 
+void editarAlunoPorIdentificador(struct Aluno *aluno, int identificador)
+{
+  struct Aluno *indiceAtual = aluno;
+
+  while (indiceAtual != NULL)
+  {
+    if (indiceAtual->identificador == identificador)
+    {
+      printf("Aluno encontrado! Você pode editar os dados:\n");
+
+      printf("Digite o novo nome: ");
+      scanf("%s", indiceAtual->nome);
+
+      printf("Digite a nova nota: ");
+      scanf("%f", &indiceAtual->nota);
+
+      printf("Dados do aluno atualizados com sucesso!\n");
+      return;
+    }
+    indiceAtual = indiceAtual->proximo;
+  }
+
+  printf("Aluno com o identificador %d não foi encontrado.\n", identificador);
+}
+
+void exibirAluno(struct Aluno *aluno)
+{
+  if (aluno == NULL)
+  {
+    printf("Nenhum aluno cadastrado.\n");
+    return;
+  }
+
+  printf("\nLista de Alunos:\n");
+  struct Aluno *indiceAtual = aluno;
+  while (indiceAtual != NULL)
+  {
+    printf("Identificador: %d\n", indiceAtual->identificador);
+    printf("Nome: %s\n", indiceAtual->nome);
+    printf("Nota: %.2f\n", indiceAtual->nota);
+    printf("-----------------------------\n");
+    indiceAtual = indiceAtual->proximo;
+  }
+}
+
 void exibirEstatistica() {}
 
-int main() {
+int main()
+{
   struct Aluno *aluno = NULL;
   struct Aluno alunos[10];
 
-  
   int identificadorMenu;
   int opcao;
 
-  do {
+  do
+  {
     printf("SELECIONE UMA OPÇÃO");
     printf("( 0 ) Sair || ( 1 ) Cadastrar aluno || ( 2 ) Remover aluno || ( 3 ) Buscar aluno por identificador || ( 4 ) Editar aluno por identificador || (5) Mostrar todos os alunos da lista || (6) Ver as estatísticas do aluno)");
     scanf("%d", &opcao);
 
-    switch (opcao) {
+    switch (opcao)
+    {
     case 01:
       // Cadastro novo aluno
       cadastrarAluno(&aluno);
@@ -135,21 +189,20 @@ int main() {
 
     case 03:
       printf("Digite o identificador do aluno desejado: ");
-      scanf("%d",&identificadorMenu);
+      scanf("%d", &identificadorMenu);
       buscarAlunoPorIdentificador(aluno, identificadorMenu);
       break;
 
     case 04:
-     //Editar um aluno buscando ele pelo identificador
+      // Editar um aluno buscando ele pelo identificador
       break;
 
     case 05:
-     //Exibir todos os alunos da lista
+      // Exibir todos os alunos da lista
+      exibirAluno(aluno);
+      break;
 
-     break;
-
-
-     case 06:
+    case 06:
       /*Exibir as estatísticas:
       ** maior nota.
       ** menor nota.

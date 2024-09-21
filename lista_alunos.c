@@ -120,8 +120,7 @@ int main() {
 
   do {
     printf("SELECIONE UMA OPÇÃO");
-    printf("( 0 ) Sair || ( 1 ) Cadastra aluno || ( 2 ) Remover aluno || ( 3 ) "
-           "Buscar aluno por identificador || ( 4 ) Estatística");
+    printf("( 0 ) Sair || ( 1 ) Cadastrar aluno || ( 2 ) Remover aluno || ( 3 ) Buscar aluno por identificador || ( 4 ) Editar aluno por identificador || (5) Mostrar todos os alunos da lista || (6) Ver as estatísticas do aluno)");
     scanf("%d", &opcao);
 
     switch (opcao) {
@@ -141,11 +140,22 @@ int main() {
       break;
 
     case 04:
+     //Editar um aluno buscando ele pelo identificador
+      break;
+
+    case 05:
+     //Exibir todos os alunos da lista
+
+     break;
+
+
+     case 06:
       /*Exibir as estatísticas:
       ** maior nota.
       ** menor nota.
       ** média das notas dos alunos.
       */
+
       break;
 
     case 0:

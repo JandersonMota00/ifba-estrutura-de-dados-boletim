@@ -115,7 +115,7 @@ void removerAlunoPorIdentificador(struct Aluno **aluno, int identificador)
   printf("Aluno com o identificador %d não foi encontrado", identificador);
 }
 
-void editarAlunoPorIdentificador(struct Aluno *aluno, int identificador)
+void editarAluno(struct Aluno *aluno, int identificador)
 {
   struct Aluno *indiceAtual = aluno;
 
@@ -160,7 +160,42 @@ void exibirAluno(struct Aluno *aluno)
   }
 }
 
-void exibirEstatistica() {}
+void exibirEstatistica(struct Aluno *aluno)
+{
+  if (aluno == NULL)
+  {
+    printf("Nenhum aluno cadastrado!\n");
+    return;
+  }
+
+  float maiorNota = aluno->nota;
+  float menorNota = aluno->nota;
+  float somaNotas = 0.0;
+  int contagem = 0;
+  struct Aluno *indiceAtual = aluno;
+
+  while (indiceAtual != NULL)
+  {
+    if (indiceAtual->nota > maiorNota)
+    {
+      maiorNota = indiceAtual->nota;
+    }
+    if (indiceAtual->nota < menorNota)
+    {
+      menorNota = indiceAtual->nota;
+    }
+    somaNotas += indiceAtual->nota;
+    contagem++;
+    indiceAtual = indiceAtual->proximo;
+  }
+
+  float mediaNotas = somaNotas / contagem;
+
+  printf("\nEstatísticas dos Alunos:\n");
+  printf("Maior nota: %.2f\n", maiorNota);
+  printf("Menor nota: %.2f\n", menorNota);
+  printf("Média das notas: %.2f\n", mediaNotas);
+}
 
 int main()
 {
@@ -195,6 +230,9 @@ int main()
 
     case 04:
       // Editar um aluno buscando ele pelo identificador
+      printf("Digite o identificador do aluno que deseja editar: ");
+      scanf("%d", &identificadorMenu);
+      editarAluno(aluno, identificadorMenu);
       break;
 
     case 05:
@@ -208,7 +246,7 @@ int main()
       ** menor nota.
       ** média das notas dos alunos.
       */
-
+      exibirEstatistica(aluno);
       break;
 
     case 0:

@@ -87,9 +87,12 @@ void removerAlunoPorIdentificador(struct Aluno **aluno, int identificador) {
       // vai ser atualizada
       if (indiceAnterior == NULL) {
         *aluno = indiceAtual->proximo;
+      //Remoção dos alunos caso não seja o primeiro aluno da lista a ser removido, ou seja, segundo em diante  
       } else {
         indiceAnterior->proximo = indiceAtual->proximo;
       }
+
+      //Liberar a memória do aluno removido
       free(indiceAtual);
       printf("Aluno com o identificador %d, foi removido da lista!",
              identificador);

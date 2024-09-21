@@ -40,6 +40,9 @@ void exibirAluno() {}
 
 // Busca aluno pelo identificador.
 void buscarAlunoPorIdentificador(struct Aluno *aluno, int identificador) {
+   
+   //Variável de controle para encontrar aluno
+   int encontrado = 0;
 
   // Indice atual é um ponteiro do tipo aluno e que vai armazenar o aluno do
   // primeiro nó, para iniciar a busca.
@@ -51,24 +54,32 @@ void buscarAlunoPorIdentificador(struct Aluno *aluno, int identificador) {
     // Condição que verifica se o identificador do nó atual é igual ao que estou
     // buscando.
     if (indiceAtual->identificador == identificador) {
-      printf("Nome: %d\n", indiceAtual->nome);
-      printf("Nota: %d\n", indiceAtual->nota);
+      printf("Nome: %s\n", indiceAtual->nome);
+      printf("Nota: %f\n", indiceAtual->nota);
       printf("Identificador %d\n", indiceAtual->identificador);
+      //Aluno encontrado
+      encontrado = 1;
+      //Encerrar a busca
+      break;
     }
 
     // indiceAtual avança para o proximo nó da lista encadeada, caso a condição
     // do if não seja atendida
     indiceAtual = indiceAtual->proximo;
   }
-
-  printf("\nAluno do identificador %d não foi encontrado na lista encadeada\n",
+  
+  //Exibe a mensagem caso o aluno não seja encontrado
+  if(!encontrado){
+    printf("\nAluno do identificador %d não foi encontrado na lista encadeada\n",
          identificador);
+  }
+ 
 }
 
 void removerAlunoPorIdentificador(struct Aluno **aluno, int identificador) {
 
-  struct Aluno **indiceAtual = *aluno;  // Inicio da lista
-  struct Aluno **indiceAnterior = NULL; // Ponteiro para o nó anterior
+  struct Aluno *indiceAtual = *aluno;  // Inicio da lista
+  struct Aluno *indiceAnterior = NULL; // Ponteiro para o nó anterior
 
   while (indiceAtual != NULL) {
     if (indiceAtual->identificador == identificador) {
@@ -100,12 +111,14 @@ int main() {
   struct Aluno *aluno = NULL;
   struct Aluno alunos[10];
 
+  
+  int identificadorMenu;
   int opcao;
 
   do {
     printf("SELECIONE UMA OPÇÃO");
     printf("( 0 ) Sair || ( 1 ) Cadastra aluno || ( 2 ) Remover aluno || ( 3 ) "
-           "Exibir alunos || ( 4 ) Estatística");
+           "Buscar aluno por identificador || ( 4 ) Estatística");
     scanf("%d", &opcao);
 
     switch (opcao) {
@@ -119,7 +132,9 @@ int main() {
       break;
 
     case 03:
-      // Exibir todos os alunos da lista.
+      printf("Digite o identificador do aluno desejado: ");
+      scanf("%d",&identificadorMenu);
+      buscarAlunoPorIdentificador(aluno, identificadorMenu);
       break;
 
     case 04:
@@ -137,7 +152,7 @@ int main() {
     default:
       printf("\nOpção inválida!\n");
       for (int i = 0; i < 10000; i++)
-        clear();
+        system("clear");
       break;
     }
   } while (opcao != 0);

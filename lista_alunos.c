@@ -20,7 +20,7 @@ void cadastrarAluno(struct Aluno **aluno)
   // Criação de um novo aluno
   struct Aluno *novoAluno = (struct Aluno *)malloc(sizeof(struct Aluno));
 
-  printf("Digite o identificador (nº): ");
+  printf("Digite o identificador (numero): ");
   scanf("%d", &novoAluno->identificador);
 
   printf("Digite o nome: ");
@@ -200,15 +200,15 @@ void exibirEstatistica(struct Aluno *aluno)
 int main()
 {
   struct Aluno *aluno = NULL;
-  struct Aluno alunos[10];
+  //struct Aluno alunos[10];
 
   int identificadorMenu;
   int opcao;
 
   do
   {
-    printf("SELECIONE UMA OPÇÃO");
-    printf("( 0 ) Sair || ( 1 ) Cadastrar aluno || ( 2 ) Remover aluno || ( 3 ) Buscar aluno por identificador || ( 4 ) Editar aluno por identificador || (5) Mostrar todos os alunos da lista || (6) Ver as estatísticas do aluno)");
+    printf("SELECIONE UMA OPCAO\n");
+    printf("( 0 ) Sair\n( 1 ) Cadastrar aluno\n( 2 ) Remover aluno\n( 3 ) Buscar aluno por identificador\n( 4 ) Editar aluno por identificador\n( 5 ) Mostrar todos os alunos da lista\n( 6 ) Ver as estatísticas do aluno)\n>> ");
     scanf("%d", &opcao);
 
     switch (opcao)
@@ -253,7 +253,7 @@ int main()
       break;
 
     case 0:
-      printf("Programa encerrado.\n");
+      printf("\n\nPrograma encerrado.\n");
       break;
 
     default:

@@ -220,6 +220,9 @@ int main()
 
     case 02:
       // Remoção aluno pelo identificador.
+      printf("Digite o identificador do aluno desejado para a remoção: ");
+      scanf("%d",&identificadorMenu);
+      removerAlunoPorIdentificador(&aluno, identificadorMenu);
       break;
 
     case 03:

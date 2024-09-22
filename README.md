@@ -11,15 +11,15 @@
   <tr>
     <td align="center">
       <img src="https://avatars.githubusercontent.com/u/165097289?v=4" width="100px;" alt="Foto do Integrante Igor"/><br />
-      <sub><b>Igor Cauan</b></sub>
+      <sub><b><a href="https://github.com/IgorCauanAl">Igor Cauan</a></b></sub>
     </td>
     <td align="center">
       <img src="https://avatars.githubusercontent.com/u/80362674?v=4" width="100px;" alt="Foto do Integrante Janderson"/><br />
-      <sub><b>Janderson Mota</b></sub>
+      <sub><b><a href="https://github.com/JandersonMota">Janderson Mota</a></b></sub>
     </td>
     <td align="center">
       <img src="https://avatars.githubusercontent.com/u/157417082?v=4" width="100px;" alt="Foto do Integrante Saulo"/><br />
-      <sub><b>Saulo Melo</b></sub>
+      <sub><b><a href="https://github.com/SaulinhoDevs">Saulo Melo</a></b></sub>
     </td>
   </tr>
 </table>

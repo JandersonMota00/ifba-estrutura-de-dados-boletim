@@ -1,5 +1,8 @@
 # IFBA - Estrutura de Dados
 
+- **Instituição:** IFBA - Instituto Federal da Bahia
+- **Curso:** Análise e Desenvolvimento de Sistemas (ADS)
+- **Disciplina:** Estrutura de Dados
 - **Projeto:** Lista de Alunos do IFBA
 - **Professor:** Felipe Gustavo de Souza Gomes
 - **Semestre:** 3
